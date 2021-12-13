@@ -1,0 +1,56 @@
+/* global parameters */
+
+* {
+  margin: 0;
+  padding:  0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+
+}
+
+.game {
+  position: absolute;
+  top: 4rem;
+  left: 50%;
+  transform; translate(-50%);
+  width: 600px;
+  height: 550px;
+  background: blue;
+  border: 1px solid black;
+  box-shadow: 4px, 5px, black;
+  padding: 1.5rem;
+}
+
+.slots {
+  width: 85px;
+  height: 85px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.reset {
+  position: absolute;
+  top: 95 vh;
+  left: 50%;
+  transform: translate(-50%);
+  border: 1px solid black;
+  width: 5rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* End of Sheet  */
