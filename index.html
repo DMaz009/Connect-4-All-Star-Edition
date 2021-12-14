@@ -8,9 +8,26 @@
 </head>
 
 <body>
-    <main>
+    <hearder>
         <h1>Connect-4 All Star Edition</h1>
         <h3 class="playerTurn"> </h3>
+        <form onSubmit="game.namingPlayer(event)">
+          Insert your name player 1:
+          <input id="start" type="text" name="fname" data-player="1"=><br>
+          <input id="startColor" type="text" name="color"><br>
+          <input type="submit" value="Submit">
+        </form>
+        <form onSubmit="game.namingPlayer(event)">
+          Insert your name player 2:
+          <input id="start1" type="text" name="fname"><br>
+          <input id="startColor1" type="text" name="color"><br>
+          <input type="submit" value="Submit">
+        </form>
+
+
+    </header>
+    <main>
+        <p id="playerInfo"></p>
         <div class="game">
             <table>
                 <tr>
@@ -76,7 +93,7 @@
 
     </div>
 
-    <script type="text/javascript" src="js/app.js">
+    <script type="text/javascript" src="js/app1.js">
 
     </script>
 </body>

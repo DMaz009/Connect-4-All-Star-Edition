@@ -29,23 +29,56 @@ const reset = document.querySelector('.reset')
 
 // Class
 
-const Game {
-  constructor(playerColor, name) {
-    this.playerColor = playerColor,
-    this.currentPlayer = 1,
+class Player {
+  constructor(playerColor, name, wins) {
+    this.playerColor = playerColor
+    //this.currentPlayer = 1
     this.name = name
-
-
-
+    this.wins = wins
   }
 }
 
+// let player1;
+// const naming = (event) => {
+//   event.preventDefault()
+//   console.log(event.target.fname.value)
+//   playerName = event.target.fname.value
+//   playerColor = event.target.color.value
+//   console.log("I was clicked")
+//
+//   player1 = new Player(playerColor, playerName, 0)
+// }
+
+// const player1 = new Player( )
+//
+// const player2 = new Player( )
 
 
 
+const game = {
+  player1: "",
+  player2: "",
+  currentPlayer: 1,
+  namingPlayer: (event) => {
+    event.preventDefault()
+    // console.log(event.target.fname.value)
+    playerName = event.target.fname.value
+    playerColor = event.target.color.value
+    console.log("I was clicked")
 
+    let whichPlayer = event.target.fname.dataset.player
+    if (whichPlayer === "1") {
+      game.player1 = new Player(playerColor, playerName, 0)
+      console.log(game.player1)
+    } else {
+      game.player2 = new Player(playerColor, playerName, 0)
+      console.log(game.player2)
+    }
+  },
+  newMethod: () => {
 
-
+  }, 
+}
 
 
 
