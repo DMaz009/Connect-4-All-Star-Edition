@@ -108,8 +108,13 @@ function changeColor(event) {
 // to ensure they are all the same color
 //creating a function where 4 parameters have to be the same
 function colorMatch(one, two, three, four) {
-    return (one === two && one === three && one === four &&
+    if (one === two && one === three && one === four &&
         one !== 'white')
+    if (one === game.player1.color){
+      game.player1.winTally()
+    } else {
+      game.player2.winTally()
+    }
 }
 
 //just looking if they won horizontally
@@ -131,21 +136,21 @@ function horizontalCheck() {
     }
 }
 
-function verticalCheck() {
+function verticalCheck(playerName) {
     for (let col = 0; col < 6; col++) {
         for (let row = 0; row < 3; row++) {
             if (colorMatch(tableRow[row].children[col].style.backgroundColor,
                     tableRow[row + 1].children[col].style.backgroundColor,
                     tableRow[row + 2].children[col].style.backgroundColor,
                     tableRow[row + 3].children[col].style.backgroundColor)) {
-                return true
+                alert(`${playerName} has won!`)
             }
         }
     }
 }
 
 function diagonalCheck(playerName) {
-    for (let col = 0; col < 6; col++) {
+    for (let col = 0; col < 4; col++) {
         for (let row = 0; row < 3; row++) {
             if (colorMatch(tableRow[row].children[col].style.backgroundColor,
                     tableRow[row + 1].children[col + 1].style.backgroundColor,
@@ -153,16 +158,21 @@ function diagonalCheck(playerName) {
                     tableRow[row + 3].children[col + 3].style.backgroundColor)) {
                 alert(`${playerName} has won!`)
             }
-            if (colorMatch(tableRow[row].children[col].style.backgroundColor,
-                    tableRow[row - 1].children[col - 1].style.backgroundColor,
-                    tableRow[row - 2].children[col - 2].style.backgroundColor,
-                    tableRow[row - 3].children[col - 3].style.backgroundColor)) {
-                alert(`${playerName} has won!`)
-            }
+
         }
     }
-}
+    for (let col = 0; col < 4; col++) {
+        for (let row = 5; row > 2; row--) {
+            if (colorMatch(tableRow[row].children[col].style.backgroundColor,
+                    tableRow[row - 1].children[col + 1].style.backgroundColor,
+                    tableRow[row - 2].children[col + 2].style.backgroundColor,
+                    tableRow[row - 3].children[col + 3].style.backgroundColor)) {
+                alert(`${playerName} has won!`)
+              }
 
+          }
+      }
+}
 
 
 
