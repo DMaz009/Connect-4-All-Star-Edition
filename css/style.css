@@ -1,16 +1,12 @@
 /* global parameters */
 
-@-ms-viewport {
-  width: device-width ;
 
 body {
   position: sticky;
   margin: 0;
   padding:  0;
   /* box-sizing: border-box; */
-  background-image: url(https://i.imgur.com/zl3m8tg.jpg)
-
-
+  background-image: url(https://i.imgur.com/zl3m8tg.jpg);
 }
 
 .h1 {
@@ -105,7 +101,7 @@ body {
 }
 
 
-}
+
 
 
 /* End of Sheet  */
