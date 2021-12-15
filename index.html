@@ -8,97 +8,111 @@
 </head>
 
 <body>
-    <hearder>
-        <h1>Connect-4 All Star Edition</h1>
-        <h3 class="playerTurn"> </h3>
-        <form onSubmit="game.namingPlayer(event)">
-          Insert your name player 1:
-          <input id="start" type="text" name="fname" data-player="1"=><br>
-          <input id="startColor" type="text" name="color"><br>
-          <input type="submit" value="Submit">
-        </form>
-        <form onSubmit="game.namingPlayer(event)">
-          Insert your name player 2:
-          <input id="start1" type="text" name="fname"><br>
-          <input id="startColor1" type="text" name="color"><br>
-          <input type="submit" value="Submit">
-        </form>
 
-        <nav>
-          <button type="button" name="button">
-            <a href="https://htmlcolorcodes.com/color-names/" target="_blank" class="colorList">Color Options</a>
-          </button>
-        </nav>
+  <hearder class="header">
+    <h1 class="h1">Connect-4 All Star Edition</h1>
+    <h3 class="playerTurn"> </h3>
 
-        </div>
-
-    </header>
-    <main>
-        <p id="playerInfo"></p>
-        <div class="game">
-            <table>
-                <tr>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                </tr>
-                <tr>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                </tr>
-                <tr>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                </tr>
-                <tr>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                </tr>
-                <tr>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                </tr>
-                <tr>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                    <td class="slots"></td>
-                </tr>
-
-            </table>
-        </div>
-    </main>
-
-    <div class="reset">
-
+    <div class="scoreboard">
+      <div class="scoreboardName">Player One</div>
+      <div class="scoreboardName">Player Two</div>
+      <div class="playerScore" id="player1Score">0</div>
+      <div class="playerScore" id="player2Score">0</div>
     </div>
+
+
+
+  </header>
+
+
+
+  <main>
+    <form class="form1" onSubmit="game.namingPlayer(event)">
+      Insert your name player 1:
+      <input id="start" type="text" name="fname" data-player="1"=><br>
+      Insert your color:
+      <input id="startColor" type="text" name="color"><br>
+      Click Submit <br>
+      <input type="submit" value="Submit">
+    </form>
+    <form class="form2" onSubmit="game.namingPlayer(event)">
+      Insert your name player 2:
+      <input id="start1" type="text" name="fname"><br>
+      Insert your color:
+      <input id="startColor1" type="text" name="color"><br>
+      Click Submit <br>
+      <input type="submit" value="Submit">
+    </form>
+
+    <nav class="colorButton">
+      <button class="colorButton" type="button" name="button">
+        <a class="colorButton" href="https://htmlcolorcodes.com/color-names/"
+          target="_blank" class="colorList">Color Options</a>
+      </button>
+    </nav>
+
+    <p id="playerInfo"></p>
+
+    <div class="game">
+        <table>
+            <tr>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+            </tr>
+            <tr>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+            </tr>
+            <tr>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+            </tr>
+            <tr>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+            </tr>
+            <tr>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+            </tr>
+            <tr>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+              <td class="slots"></td>
+            </tr>
+
+        </table>
+      </div>
+    </main>
 
     <script type="text/javascript" src="js/app1.js">
 

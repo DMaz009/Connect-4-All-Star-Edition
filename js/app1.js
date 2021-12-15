@@ -19,7 +19,11 @@ const playerTurn = document.querySelector('.playerTurn')
 
 const reset = document.querySelector('.reset')
 
+const playerInfo = document.querySelector('#playerInfo')
 
+const player1Score = document.querySelector('#player1Score')
+
+const player2score = document.querySelector('#player2Score')
 
 // Class
 
@@ -34,7 +38,12 @@ class Player {
   winTally (){
     this.wins++
     console.log(this.wins);
+    player1Score.innerText = game.player1.wins
+    player2Score.innerText = game.player2.wins
     alert(`${this.name} has won! You have ${this.wins} wins!`)
+    if (this.wins > 2) {
+      alert("You are the grand champion! Hit refresh if you want to start over")
+    }
   }
 
 }
@@ -112,7 +121,7 @@ const game = {
               console.log("player 2 winTally");
               game.player2.winTally()
             }
-            setTimeout(game.clearBoard, 2000)
+            setTimeout(game.clearBoard, 500)
           }
   },
 
@@ -142,7 +151,6 @@ const game = {
                         tableRow[i].children[col + 2].style.backgroundColor,
                         tableRow[i].children[col + 3].style.backgroundColor)) {
                     alert(`${playerName} has won!`)
-                    game.over = true;
                 }
             }
         }
