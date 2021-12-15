@@ -1,5 +1,8 @@
 /* global parameters */
 
+@-ms-viewport {
+  width: device-width ;
+
 body {
   position: sticky;
   margin: 0;
@@ -20,10 +23,10 @@ body {
 .game {
   position: absolute;
   top: 4rem;
-  left: 35%;
+  left: 40%;
   transform; translate(-50%);
-  width: 500px;
-  height: 470px;
+  max-width: 500px;
+  max-height: 470px;
   background-image: url(https://i.imgur.com/AtDf5cT.jpg);
   border: 1px solid black;
   box-shadow: 4px, 5px, black;
@@ -38,6 +41,7 @@ body {
   background: white;
   border: 2px solid black;
   border-radius: 50%;
+  clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
 
 
@@ -83,13 +87,13 @@ body {
 
 .form1{
   position: absolute;
-  top: 110%;
+  top: 100%;
 
 }
 
 .form2{
   position: absolute;
-  top: 170%;
+  top: 150%;
 
 }
 
@@ -101,6 +105,7 @@ body {
 }
 
 
+}
 
 
 /* End of Sheet  */

@@ -42,7 +42,7 @@ class Player {
     player2Score.innerText = game.player2.wins
     alert(`${this.name} has won! You have ${this.wins} wins!`)
     if (this.wins > 2) {
-      alert("You are the grand champion! Hit refresh if you want to start over")
+      alert("You are the champion! Hit refresh if you want to start over")
     }
   }
 
@@ -143,7 +143,7 @@ const game = {
         for (let i = 0; i < tableRow.length; i++) {
             // creating a column for loop within the row for loop
             // look if 4 color in from column to column match horizontally.
-            for (let col = 0; col < 3; col++) {
+            for (let col = 0; col < 4; col++) {
                 // if there is a color match moving left to right.
                 // colormatch function takes in 4 parameters to compare.
                 if (game.colorMatch(tableRow[i].children[col].style.backgroundColor,
