@@ -82,6 +82,7 @@ const game = {
   player1: "",
   player2: "",
   currentPlayer: 1,
+  over: false,
 
   namingPlayer: (event) => {
     event.preventDefault()
@@ -103,7 +104,7 @@ const game = {
   colorMatch: (one, two, three, four) => {
       if (one === two && one === three && one === four &&
           one !== 'white') {
-            console.log("FOur vertical!")
+            console.log("Four vertical!")
             if (one === game.player1.playerColor){
               console.log("player 1 winTally");
               game.player1.winTally()
@@ -111,6 +112,7 @@ const game = {
               console.log("player 2 winTally");
               game.player2.winTally()
             }
+            setTimeout(game.clearBoard, 2000)
           }
   },
 
@@ -122,6 +124,7 @@ const game = {
                       tableRow[row + 2].children[col].style.backgroundColor,
                       tableRow[row + 3].children[col].style.backgroundColor)) {
                   alert(`${playerName} has won!`)
+
               }
           }
       }
@@ -139,6 +142,7 @@ const game = {
                         tableRow[i].children[col + 2].style.backgroundColor,
                         tableRow[i].children[col + 3].style.backgroundColor)) {
                     alert(`${playerName} has won!`)
+                    game.over = true;
                 }
             }
         }
@@ -169,6 +173,24 @@ const game = {
         }
   },
 
+  drawCheck: (playerName) => {
+    let fullSlot = []
+    for (i=0; i < tableSlots.length; i++){
+      if (tableSlots[i].style.backgroundColor !== 'white'){
+          fullSlot.push(tableSlots[i]);
+      }
+
+      if (fullSlot.length === tableSlots.length){
+          alert(`There has been a tie!`)
+      }
+    }
+  },
+
+  clearBoard: () => {
+        for (let i=0; i<tableSlots.length; i++){
+          tableSlots[i].style.backgroundColor = "white";
+        }
+  },
 
 }
 
@@ -180,6 +202,7 @@ function checkForWinner(playerName){
   game.verticalCheck(playerName);
   game.horizontalCheck(playerName)
   game.diagonalCheck(playerName)
+  game.drawCheck()
 }
 
 

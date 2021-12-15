@@ -175,8 +175,27 @@ function diagonalCheck(playerName) {
 }
 
 
+function drawCheck(playerName){
+  let fullSlot = []
+  for (i=0; i < tableSlots.length; i++){
+    if (tableSlots[i].style.backgroundColor !== 'white'){
+        fullSlot.push(tableSlots[i]);
+    }
 
+    if (fullSlot.length === tableSlots.length){
+        alert(`There has been a tie!`)
+    }
+  }
+}
 
+function clearBoard() {
+  if (horizontalCheck === true || verticalCheck === true ||
+     diagonalCheck === true || drawCheck === true) {
+       setInterval(() => {
+        cell.style.backgroundColor = 'white';
+    }, 2000);    // Set all slots to white for new game.
+  }
+}
 
 
 
