@@ -25,6 +25,7 @@ const player1Score = document.querySelector('#player1Score')
 
 const player2score = document.querySelector('#player2Score')
 
+
 // Class
 
 class Player {
@@ -201,8 +202,6 @@ const game = {
   },
 
 }
-
-
 
 
 

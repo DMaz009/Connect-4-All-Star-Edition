@@ -13,7 +13,18 @@ body {
   position: sticky;
   text-align: center;
   color: white;
+}
 
+h1:hover {
+  text-shadow: 0 1px 1px #bbb,
+                0 2px 0 #999,
+                0 3px 0 #888,
+                0 4px 0 #777,
+                0 5px 0 #666,
+                0 6px 0 #555,
+                0 7px 0 #444,
+                0 8px 0 #333,
+                0 9px 7px #302314;
 }
 
 .game {
@@ -38,8 +49,20 @@ body {
   border: 2px solid black;
   border-radius: 50%;
   clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+  animation-name: rotate;
+  animation-duration: 1.5s;
+  animation-direction: reverse;
 }
 
+@keyframes rotate {
+0% {
+    transform: rotate(0);
+}
+
+100% {
+    transform: rotate(360deg);
+ }
+}
 
 .scoreboard {
   display: grid;
@@ -95,7 +118,7 @@ body {
 
 .colorButton {
   position: sticky;
-  color: red;
+  color: deeppink;
   left: 10%;
   padding: 10px 20px 10px 20px;
 }
