@@ -13,7 +13,12 @@
   <hearder class="header">
     <h1 class="h1">Connect-4 Color X Edition</h1>
     <h3 class="playerTurn"> </h3>
-
+    <!-- <nav class="colorButton">
+      <button class="colorButton" type="button" name="button">
+        <a class="colorButton" href="https://htmlcolorcodes.com/color-names/"
+          target="_blank" class="colorList">Color Options</a>
+      </button>
+    </nav> -->
     <div class="scoreboard">
       <div class="scoreboardName">Player One</div>
       <div class="scoreboardName">Player Two</div>
@@ -28,31 +33,33 @@
 
 
   <main>
+
     <form class="form1" onSubmit="game.namingPlayer(event)">
-      Insert your name player 1:
-      <input id="start" type="text" name="fname" data-player="1"=><br><br>
-      Insert your color:
-      <input id="startColor" type="text" name="color"><br>
+      Insert your name:
+      <input id="start" type= "text" name="fname" data-player="1"=><br><br>
+      Pick your color:
+      <input id="startColor" type="color" name="color"><br>
        <br>
       <input type="submit" value="Submit">
     </form>
+
     <form class="form2" onSubmit="game.namingPlayer(event)">
-      Insert your name player 2:
+      Insert your name:
       <input id="start1" type="text" name="fname"><br><br>
-      Insert your color:
-      <input id="startColor1" type="text" name="color"><br>
+      Pick your color:
+      <input id="startColor1" type="color" name="color"><br>
         <br>
       <input type="submit" value="Submit">
     </form>
 
-    <nav class="colorButton">
+    <!-- <nav class="colorButton">
       <button class="colorButton" type="button" name="button">
         <a class="colorButton" href="https://htmlcolorcodes.com/color-names/"
           target="_blank" class="colorList">Color Options</a>
       </button>
-    </nav>
+    </nav> -->
 
-    <p id="playerInfo"></p>
+    <p id="playerInfo">INFO</p>
 
     <div class="game">
         <table>

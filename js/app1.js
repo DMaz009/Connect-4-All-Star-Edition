@@ -25,6 +25,10 @@ const player1Score = document.querySelector('#player1Score')
 
 const player2score = document.querySelector('#player2Score')
 
+// const submitButton1 = document.querySelectorAll('#start');
+//
+// const submitButton2 = document.querySelectorAll('.form2');
+
 
 // Class
 
@@ -41,6 +45,7 @@ class Player {
     console.log(this.wins);
     player1Score.innerText = game.player1.wins
     player2Score.innerText = game.player2.wins
+    playerInfo.innerText = `${this.name} has won!`
     alert(`${this.name} has won! You have ${this.wins} wins!`)
     if (this.wins > 2) {
       alert("You are the champion! Hit refresh if you want to start over")
@@ -101,13 +106,21 @@ const game = {
     playerColor = event.target.color.value
     // console.log("I was clicked")
 
+    // greet(event);
+
+
     let whichPlayer = event.target.fname.dataset.player
     if (whichPlayer === "1") {
       game.player1 = new Player(playerColor, playerName, 0)
+      // submitButtons.innerText = `${game.player1}`
       console.log(game.player1)
+      greet(game.player1)
+      setColor(game.player1)
     } else {
       game.player2 = new Player(playerColor, playerName, 0)
       console.log(game.player2)
+      greet(game.player2)
+      setColor(game.player2)
     }
   },
 
@@ -122,7 +135,7 @@ const game = {
               console.log("player 2 winTally");
               game.player2.winTally()
             }
-            setTimeout(game.clearBoard, 500)
+            setTimeout(game.clearBoard, 1200)
           }
   },
 
@@ -203,7 +216,23 @@ const game = {
 
 }
 
+const submitButton1 = document.querySelector('.form1');
 
+function greet(player){
+  // print the event object to console
+
+  playerInfo.innerText = `Hello, ${player.name}`;
+}
+
+function setColor(player){
+  if (player === game.player1) {
+    player1Score.style.color = player.playerColor
+  } else {
+    player2Score.style.color = player.playerColor
+  }
+}
+
+// submitButton1.onclick =
 
 function checkForWinner(playerName){
   game.verticalCheck(playerName);
