@@ -198,7 +198,42 @@ function clearBoard() {
 }
 
 
+for (let i = 0; i < tableSlots.length; i++) {
+    //for each celll add an event listener//
+    tableSlots[i].style.backgroundColor = "white";
+    tableSlots[i].addEventListener('click', (event) => {
+        at the event click assign row, assign column.
+        let column = event.target.cellIndex;
+        let slot;
+        // Need to have app check the bottom row first and go back up.
+        // within the loop go through the children cells of the rows and take the index.
+        for (let i = 5; i >= 0; i--) {
+            // console.log(tableRow[i].children[column].style.backgroundColor);
+            if (tableRow[i].children[column].style.backgroundColor === 'white') {
+                slot = tableRow[i].children[column]
+                // console.log("test");
+                // // need to be able to change turns...
+                if (game.currentPlayer === 1) {
+                    slot.style.backgroundColor = game.player1.playerColor;
+                    console.log("Player: ", game.currentPlayer)
+                    console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
+                    checkForWinner(game.currentPlayer.name)
+                    game.currentPlayer = 2
 
+                    return
+                } else {
+                   slot.style.backgroundColor = game.player2.playerColor;
+                   console.log("Player: ", game.currentPlayer)
+                   console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
+                   checkForWinner(game.currentPlayer.name)
+                   game.currentPlayer = 1
 
+                   return
+                }
+            }
+        }
+    })
+  // console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
 
+}
 //

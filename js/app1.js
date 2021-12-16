@@ -25,6 +25,8 @@ const player1Score = document.querySelector('#player1Score')
 
 const player2score = document.querySelector('#player2Score')
 
+const xColor = document.getElementById('xColor')
+
 // const submitButton1 = document.querySelectorAll('#start');
 //
 // const submitButton2 = document.querySelectorAll('.form2');
@@ -46,7 +48,7 @@ class Player {
     player1Score.innerText = game.player1.wins
     player2Score.innerText = game.player2.wins
     playerInfo.innerText = `${this.name} has won!`
-    alert(`${this.name} has won! You have ${this.wins} wins!`)
+    // alert(`${this.name} has won! You have ${this.wins} wins!`)
     if (this.wins > 2) {
       alert("You are the champion! Hit refresh if you want to start over")
     }
@@ -54,50 +56,53 @@ class Player {
 
 }
 
+const assignToken = () => {
+  let column = event.target.cellIndex;
+  let slot;
+// Need to have app check the bottom row first and go back up.
+// within the loop go through the children cells of the rows and take the index.
+  for (let i = 5; i >= 0; i--) {
+      // console.log(tableRow[i].children[column].style.backgroundColor);
+      if (tableRow[i].children[column].style.backgroundColor === 'white') {
+          slot = tableRow[i].children[column]
+          // console.log("test");
+          // // need to be able to change turns...
+          if (game.currentPlayer === 1) {
+              slot.style.backgroundColor = game.player1.playerColor;
+              console.log("Player: ", game.currentPlayer)
+              console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
+              checkForWinner(game.currentPlayer.name)
+              game.currentPlayer = 2
+
+              return
+          } else {
+             slot.style.backgroundColor = game.player2.playerColor;
+             console.log("Player: ", game.currentPlayer)
+             console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
+             checkForWinner(game.currentPlayer.name)
+             game.currentPlayer = 1
+
+             return
+          }
+      }
+  }
+}
+
+
 for (let i = 0; i < tableSlots.length; i++) {
     //for each celll add an event listener//
     tableSlots[i].style.backgroundColor = "white";
     tableSlots[i].addEventListener('click', (event) => {
-        //at the event click assign row, assign column.
-        let column = event.target.cellIndex;
-        let slot;
-        // Need to have app check the bottom row first and go back up.
-        // within the loop go through the children cells of the rows and take the index.
-        for (let i = 5; i >= 0; i--) {
-            // console.log(tableRow[i].children[column].style.backgroundColor);
-            if (tableRow[i].children[column].style.backgroundColor === 'white') {
-                slot = tableRow[i].children[column]
-                // console.log("test");
-                // // need to be able to change turns...
-                if (game.currentPlayer === 1) {
-                    slot.style.backgroundColor = game.player1.playerColor;
-                    console.log("Player: ", game.currentPlayer)
-                    console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
-                    checkForWinner(game.currentPlayer.name)
-                    game.currentPlayer = 2
-
-                    return
-                } else {
-                   slot.style.backgroundColor = game.player2.playerColor;
-                   console.log("Player: ", game.currentPlayer)
-                   console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
-                   checkForWinner(game.currentPlayer.name)
-                   game.currentPlayer = 1
-
-                   return
-                }
-            }
-        }
+      assignToken()
     })
   // console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
-
 }
 
 const game = {
   player1: "",
   player2: "",
   currentPlayer: 1,
-  over: false,
+
 
   namingPlayer: (event) => {
     event.preventDefault()
@@ -126,17 +131,27 @@ const game = {
 
   colorMatch: (one, two, three, four) => {
       if (one === two && one === three && one === four &&
-          one !== 'white') {
-            console.log("Four vertical!")
-            if (one === game.player1.playerColor){
-              console.log("player 1 winTally");
-              game.player1.winTally()
-            } else {
-              console.log("player 2 winTally");
-              game.player2.winTally()
+        one !== 'white') {
+          console.log(one);
+          // need to convert to hex to compare.
+          let rgb = one.match(/\d+/g);
+          let hex = '#'+ String('0' + Number(rgb[0]).toString(16)).slice(-2) + String('0' + Number(rgb[1]).toString(16)).slice(-2) + String('0' + Number(rgb[2]).toString(16)).slice(-2);
+          console.log(hex);
+// Needed to convert rgb to hex
+// source: https://stackoverflow.com/questions/1740700/how-to-get-hex-color-value-rather-than-rgb-value
+        console.log("Four vertical!")
+          if (hex === game.player1.playerColor){
+            console.log(game.player1.playerColor)
+            console.log("player 1 winTally");
+            game.player1.winTally()
+            // return
+          } else {
+             console.log("player 2 winTally");
+             game.player2.winTally()
+
             }
             setTimeout(game.clearBoard, 1200)
-          }
+      }
   },
 
   verticalCheck: (playerName) => {
@@ -146,7 +161,7 @@ const game = {
                       tableRow[row + 1].children[col].style.backgroundColor,
                       tableRow[row + 2].children[col].style.backgroundColor,
                       tableRow[row + 3].children[col].style.backgroundColor)) {
-                  alert(`${playerName} has won!`)
+                  // alert(`${playerName} has won!`)
 
               }
           }
@@ -164,7 +179,7 @@ const game = {
                         tableRow[i].children[col + 1].style.backgroundColor,
                         tableRow[i].children[col + 2].style.backgroundColor,
                         tableRow[i].children[col + 3].style.backgroundColor)) {
-                    alert(`${playerName} has won!`)
+                    // alert(`${playerName} has won!`)
                 }
             }
         }
@@ -177,7 +192,7 @@ const game = {
                       tableRow[row + 1].children[col + 1].style.backgroundColor,
                       tableRow[row + 2].children[col + 2].style.backgroundColor,
                       tableRow[row + 3].children[col + 3].style.backgroundColor)) {
-                  alert(`${playerName} has won!`)
+                  // alert(`${playerName} has won!`)
               }
 
           }
@@ -188,7 +203,7 @@ const game = {
                       tableRow[row - 1].children[col + 1].style.backgroundColor,
                       tableRow[row - 2].children[col + 2].style.backgroundColor,
                       tableRow[row - 3].children[col + 3].style.backgroundColor)) {
-                  alert(`${playerName} has won!`)
+                  // alert(`${playerName} has won!`)
                 }
 
             }
@@ -229,6 +244,7 @@ function setColor(player){
     player1Score.style.color = player.playerColor
   } else {
     player2Score.style.color = player.playerColor
+    xColor.style.color = player.playerColor
   }
 }
 
