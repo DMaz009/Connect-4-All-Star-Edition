@@ -27,6 +27,10 @@ const player2score = document.querySelector('#player2Score')
 
 const xColor = document.getElementById('xColor')
 
+const score1Name = document.querySelector('#score1Name')
+
+const score2Name = document.querySelector('#score2Name')
+
 // const submitButton1 = document.querySelectorAll('#start');
 //
 // const submitButton2 = document.querySelectorAll('.form2');
@@ -47,7 +51,7 @@ class Player {
     console.log(this.wins);
     player1Score.innerText = game.player1.wins
     player2Score.innerText = game.player2.wins
-    playerInfo.innerText = `${this.name} has won!`
+    playerInfo.innerText = `${this.name} has won! Loser goes next.`
     // alert(`${this.name} has won! You have ${this.wins} wins!`)
     if (this.wins > 2) {
       alert("You are the champion! Hit refresh if you want to start over")
@@ -124,6 +128,7 @@ const game = {
     } else {
       game.player2 = new Player(playerColor, playerName, 0)
       console.log(game.player2)
+      score2Name.innerText = game.player2.name
       greet(game.player2)
       setColor(game.player2)
     }
@@ -144,10 +149,14 @@ const game = {
             console.log(game.player1.playerColor)
             console.log("player 1 winTally");
             game.player1.winTally()
+            xColor.style.color = game.player1.playerColor
+            playerInfo.style.color = game.player1.playerColor
             // return
           } else {
              console.log("player 2 winTally");
              game.player2.winTally()
+             xColor.style.color = game.player2.playerColor
+             playerInfo.style.color = game.player2.playerColor
 
             }
             setTimeout(game.clearBoard, 1200)
@@ -235,16 +244,18 @@ const submitButton1 = document.querySelector('.form1');
 
 function greet(player){
   // print the event object to console
-
   playerInfo.innerText = `Hello, ${player.name}`;
+  score1Name.innerText = game.player1.name
 }
 
 function setColor(player){
   if (player === game.player1) {
     player1Score.style.color = player.playerColor
+    playerInfo.style.color = player.playerColor
   } else {
     player2Score.style.color = player.playerColor
     xColor.style.color = player.playerColor
+    playerInfo.style.color = player.playerColor
   }
 }
 
